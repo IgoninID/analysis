@@ -10,17 +10,17 @@ using namespace std;
 
 void main_without_args()
 {
-	int n;
+	size_t n;
 	cout << "Введите количество точек: ";
 	cin >> n;
 	TPoint* area = new TPoint[n];
 	cout << "\nВведите координаты точек: x, y\n";
-	for (int i = 0; i < n;i++)
+	for (size_t i = 0; i < n;i++)
 	{
 		cin >> area[i].x;
 		cin >> area[i].y;
 	}
-	int nearpoint = Near0(area, n);
+	size_t nearpoint = Near0(area, n)-1;
 	cout << "Ближайшая точка к началу координат: " << area[nearpoint].x << " ; " << area[nearpoint].y;
 }
 
@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 	}
 	if ((argc == 2) || (argv[1] == "-h") || (argv[1] == "--h"))
 	{
-		cout << "Программа вычисляет ближайшую точку к началу координат\n" << "1 аргумент - коичестов точек\n" << "2... аргументы - координаты точек в формате x, y\n";
+		cout << "Программа вычисляет ближайшую точку к началу координат\n" << "1 аргумент - количестов точек\n" << "2... аргументы - координаты точек в формате x, y\n";
 		return 0;
 	}
 	if ((argc > 2) && (argc == (stoi(argv[1]) * 2) + 2))
@@ -47,9 +47,15 @@ int main(int argc, char* argv[])
 			area[i].x = stoi(argv[2 * i + 2]);
 			area[i].y = stoi(argv[2 * i + 3]);
 		}
-		int nearpoint = Near0(area, stoi(argv[1]));
+		size_t nearpoint = Near0(area, stoi(argv[1]))-1;
 		cout << "Ближайшая точка к началу координат: " << area[nearpoint].x << " ; " << area[nearpoint].y;
 		return 0;
 	}
-	else return 1;
+	else
+	{
+		{
+			cout << "Программа вычисляет ближайшую точку к началу координат\n" << "1 аргумент - количестов точек\n" << "2... аргументы - координаты точек в формате x, y\n";
+			return 1;
+		}
+	}
 }

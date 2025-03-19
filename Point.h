@@ -29,9 +29,9 @@ double Distance(TPoint& point);
 /// <param name="area - массив точек"></param>
 /// <param name="n - количество точек"></param>
 /// <returns>
-/// Индекс ближайшей к началу координат точки в массиве
+/// Индекс+1 ближайшей к началу координат точки в массиве
 /// </returns>
-int Near0(TPoint* area, int n);
+size_t Near0(TPoint* area, size_t n);
 
 /// <summary>
 /// Тесты для Вычисления расстояния между точкой и началом координат
